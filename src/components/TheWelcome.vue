@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive, computed, watch } from 'vue'
+import { ref, useTemplateRef, reactive, onMounted, computed, watch } from 'vue'
 const props = defineProps({
   msg: String,
   xypreactive: Object,
@@ -8,6 +8,12 @@ const props = defineProps({
 const emit = defineEmits(['chnagexypref'])
 
 const num = ref(0)
+
+onMounted(()=>{
+  const btnAReactive = useTemplateRef('btnAReactive')
+  console.log(btnAReactive);
+})
+
 const nReactive = reactive({ count: 0 })
 function add() {
   num.value++
@@ -51,7 +57,7 @@ setTimeout(() => {
   <h1>{{ msg }}</h1>
   <div>{{ xypreactive.ks }}</div>
   <button @click="add">{{ num }}</button>
-  <button @click="aReactive">{{ nReactive.count }}</button>
+  <button ref="btnAReactive" @click="aReactive">{{ nReactive.count }}</button>
   <div>原数组{{ szList }}</div>
   <div>计算属性数组{{ szList2 }}</div>
 </template>

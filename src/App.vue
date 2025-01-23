@@ -2,9 +2,20 @@
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
 
-import { ref, reactive } from 'vue'
+import { ref, reactive, useTemplateRef, onMounted } from 'vue'
 const xypref = ref(50)
 const xypreactive = reactive({ ks: 100 })
+
+onMounted(()=>{
+  const refTheWelcome = useTemplateRef('refTheWelcome')
+  const refLog = useTemplateRef('refLog')
+  setTimeout(() => {
+    console.log(refTheWelcome);
+    console.log(refLog);
+    console.log(refLog.value);
+  }, 2000)
+})
+
 setTimeout(() => {
   xypref.value++
   xypreactive.ks++
@@ -16,7 +27,7 @@ function chnagexypref(valueP) {
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+    <img ref="refLog" alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
@@ -25,6 +36,7 @@ function chnagexypref(valueP) {
 
   <main>
     <TheWelcome
+      ref="refTheWelcome"
       msg="This is a Vite + Vue 3 template."
       :xypreactive
       :xypref
