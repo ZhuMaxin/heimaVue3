@@ -6,14 +6,11 @@ import { ref, reactive, useTemplateRef, onMounted } from 'vue'
 const xypref = ref(50)
 const xypreactive = reactive({ ks: 100 })
 
-onMounted(()=>{
+onMounted(() => {
   const refTheWelcome = useTemplateRef('refTheWelcome')
-  const refLog = useTemplateRef('refLog')
-  setTimeout(() => {
-    console.log(refTheWelcome);
-    console.log(refLog);
-    console.log(refLog.value);
-  }, 2000)
+  setTimeout(()=>{
+    console.log(refTheWelcome.value)
+  },2000)
 })
 
 setTimeout(() => {
@@ -27,7 +24,14 @@ function chnagexypref(valueP) {
 
 <template>
   <header>
-    <img ref="refLog" alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+    <img
+      ref="refLog"
+      alt="Vue logo"
+      class="logo"
+      src="./assets/logo.svg"
+      width="125"
+      height="125"
+    />
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />

@@ -51,6 +51,11 @@ setTimeout(() => {
 setTimeout(() => {
   emit('chnagexypref', 200)
 }, 4000)
+
+defineExpose({
+  num,
+  nReactive
+})
 </script>
 
 <template>
