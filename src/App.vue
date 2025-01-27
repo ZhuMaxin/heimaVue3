@@ -2,7 +2,7 @@
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
 
-import { ref, reactive, useTemplateRef, onMounted } from 'vue'
+import { ref, reactive, useTemplateRef, onMounted, provide } from 'vue'
 const xypref = ref(50)
 const xypreactive = reactive({ ks: 100 })
 
@@ -20,6 +20,14 @@ setTimeout(() => {
 function chnagexypref(valueP) {
   xypref.value = valueP
 }
+
+const injectxx = ref(555)
+provide('injectxx', injectxx)
+
+function injectFunAdd(num){
+  injectxx.value += num
+}
+provide('injectFunAdd', injectFunAdd)
 </script>
 
 <template>

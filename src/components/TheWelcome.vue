@@ -1,5 +1,5 @@
 <script setup>
-import { ref, useTemplateRef, reactive, onMounted, computed, watch } from 'vue'
+import { ref, useTemplateRef, reactive, onMounted, computed, watch, inject } from 'vue'
 const props = defineProps({
   msg: String,
   xypreactive: Object,
@@ -56,13 +56,20 @@ defineExpose({
   num,
   nReactive
 })
+
+const injectxx = inject('injectxx')
+const injectFunAdd = inject('injectFunAdd')
 </script>
 
 <template>
+  <el-button type="success" plain>Success</el-button>
   <h1>{{ msg }}</h1>
   <div>{{ xypreactive.ks }}</div>
   <button @click="add">{{ num }}</button>
   <button ref="btnAReactive" @click="aReactive">{{ nReactive.count }}</button>
   <div>原数组{{ szList }}</div>
   <div>计算属性数组{{ szList2 }}</div>
+  <div>inject数据</div>
+  <div>{{ injectxx }}</div>
+  <button @click="injectFunAdd(1)">inject+1</button>
 </template>
