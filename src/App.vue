@@ -3,62 +3,32 @@ import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
 
 import { ref, reactive, useTemplateRef, onMounted, provide } from 'vue'
-const xypref = ref(50)
-const xypreactive = reactive({ ks: 100 })
+import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
+// import en from 'element-plus/dist/locale/en.mjs'
 
-onMounted(() => {
-  const refTheWelcome = useTemplateRef('refTheWelcome')
-  setTimeout(()=>{
-    console.log(refTheWelcome.value)
-  },2000)
-})
-
-setTimeout(() => {
-  xypref.value++
-  xypreactive.ks++
-}, 2000)
-function chnagexypref(valueP) {
-  xypref.value = valueP
-}
-
-const injectxx = ref(555)
-provide('injectxx', injectxx)
-
-function injectFunAdd(num){
-  injectxx.value += num
-}
-provide('injectFunAdd', injectFunAdd)
 </script>
 
 <template>
-  <header>
-    <img
-      ref="refLog"
-      alt="Vue logo"
-      class="logo"
-      src="./assets/logo.svg"
-      width="125"
-      height="125"
-    />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome
-      ref="refTheWelcome"
-      msg="This is a Vite + Vue 3 template."
-      :xypreactive
-      :xypref
-      @chnagexypref="chnagexypref"
-    />
-  </main>
+  <el-config-provider :locale="zhCn">
+    <el-container>
+      <el-header>Header</el-header>
+      <el-container>
+        <el-aside width="200px">Aside</el-aside>
+        <el-main>
+          Main
+          <el-table :data="[]" style="width: 100%">
+            <el-table-column prop="date" label="Date" width="180" />
+            <el-table-column prop="name" label="Name" width="180" />
+            <el-table-column prop="address" label="Address" />
+          </el-table>
+        </el-main>
+      </el-container>
+    </el-container>
+  </el-config-provider>
 </template>
 
 <style scoped>
-header {
+/* header {
   line-height: 1.5;
 }
 
@@ -83,5 +53,5 @@ header {
     place-items: flex-start;
     flex-wrap: wrap;
   }
-}
+} */
 </style>
