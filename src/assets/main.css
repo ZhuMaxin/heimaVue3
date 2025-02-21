@@ -1,4 +1,4 @@
-@import './base.css';
+/* @import './base.css';
 
 #app {
   max-width: 1280px;
@@ -32,4 +32,29 @@ a,
     grid-template-columns: 1fr 1fr;
     padding: 0 2rem;
   }
+} */
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+li,
+form,
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family:
+    Inter,
+    Helvetica Neue,
+    Helvetica,
+    PingFang SC,
+    Hiragino Sans GB,
+    Microsoft YaHei,
+    微软雅黑,
+    Arial,
+    sans-serif;
 }

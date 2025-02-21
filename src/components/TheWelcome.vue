@@ -9,9 +9,9 @@ const emit = defineEmits(['chnagexypref'])
 
 const num = ref(0)
 
-onMounted(()=>{
+onMounted(() => {
   const btnAReactive = useTemplateRef('btnAReactive')
-  console.log(btnAReactive);
+  console.log(btnAReactive)
 })
 
 const nReactive = reactive({ count: 0 })
@@ -54,7 +54,7 @@ setTimeout(() => {
 
 defineExpose({
   num,
-  nReactive
+  nReactive,
 })
 
 const injectxx = inject('injectxx')

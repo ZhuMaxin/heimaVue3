@@ -1,19 +1,19 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import AppHeader from '@/components/layout/AppHeader.vue'
 
 import { ref, reactive, useTemplateRef, onMounted, provide } from 'vue'
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 // import en from 'element-plus/dist/locale/en.mjs'
-
 </script>
 
 <template>
   <el-config-provider :locale="zhCn">
-    <el-container>
-      <el-header>Header</el-header>
+    <el-container class="container">
+      <el-header height="55px">
+        <AppHeader />
+      </el-header>
       <el-container>
-        <el-aside width="200px">Aside</el-aside>
+        <el-aside width="250px">Aside</el-aside>
         <el-main>
           Main
           <el-table :data="[]" style="width: 100%">
@@ -28,6 +28,10 @@ import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 </template>
 
 <style scoped>
+.container {
+  height: 100vh;
+  width: 100vw;
+}
 /* header {
   line-height: 1.5;
 }
